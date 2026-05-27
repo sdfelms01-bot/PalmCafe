@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Palm Coffee Co. — Eskişehir Odunpazarı'nda specialty kahve, matcha, tatlılar ve benzersiz atmosfer. Salı oyun gecesi, Çarşamba film gecesi.">
+  <meta property="og:title" content="Palm Coffee Co. — Eskişehir">
+  <meta property="og:description" content="Specialty kahve, matcha ve ev yapımı tatlılarla dolu botanik atmosfer.">
+  <meta property="og:type" content="website">
+  <title>Palm Coffee Co. — Eskişehir</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%232a3828'/><text y='24' x='4' font-size='20' font-family='Georgia,serif' fill='%23f0ead8' font-weight='bold'>P</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+:root {
+  --g-deep: #243022;
+  --g-mid: #354c38;
+  --g-light: #5c7a64;
+  --g-pale: #8aab90;
+  --cream: #f0ead8;
+  --warm-white: #faf7f0;
+  --coffee: #8b5e3c;
+  --espresso: #2e1a0e;
+  --gold: #c9a96e;
+  --text-lt: #ddd6c4;
+}
+
+body {
+  background: var(--g-deep);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:var(--g-deep); }
+::-webkit-scrollbar-thumb { background:var(--g-light); border-radius:3px; }
+
+/* ===== INTRO SPLASH ===== */
+.intro-splash {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--g-deep);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
+  animation: splashExit 0.6s ease-in-out 3.2s forwards;
+  pointer-events: none;
+}
+.intro-splash img {
+  width: min(320px, 70vw); height: auto; opacity: 0; transform: scale(0.7);
+  animation: logoAppear 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+  filter: drop-shadow(0 0 60px rgba(201,169,110,0.25));
+}
+.intro-line { width: 0; height: 1px; background: var(--gold); animation: lineGrow 0.8s ease 1s forwards; }
+.intro-tagline {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 300;
+  font-size: 0.72rem; letter-spacing: 0.55em; text-transform: uppercase;
+  color: var(--g-pale); opacity: 0; animation: taglineAppear 0.7s ease 1.3s forwards;
+}
+@keyframes logoAppear { to { opacity:1; transform:scale(1); } }
+@keyframes lineGrow { to { width:120px; } }
+@keyframes taglineAppear { to { opacity:1; } }
+@keyframes splashExit { 0%{opacity:1;transform:translateY(0);} 100%{opacity:0;transform:translateY(-100%);} }
+.page-content { animation: contentReveal 0.5s ease 3.4s both; }
+@keyframes contentReveal { from{opacity:0;} to{opacity:1;} }
+
+/* ===== HEADER ===== */
+header {
+  position: fixed; top:0; left:0; width:100%; z-index:1000;
+  padding: 1.1rem 3.5rem;
+  display: flex; align-items:center; justify-content:space-between;
+  background: rgba(36,48,34,0.92);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(138,171,144,.18);
+}
+.logo { display:flex; flex-direction:column; text-decoration:none; line-height:1; }
+.nav-round-logo { max-height:55px; width:auto; display:block; transition:transform .3s; }
+.nav-round-logo:hover { transform:scale(1.05); }
+nav { display:flex; gap:2.2rem; align-items:center; }
+nav a {
+  font-family:'Barlow Condensed',sans-serif; font-weight:400;
+  font-size:.82rem; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--cream); text-decoration:none; position:relative; transition:color .3s;
+}
+nav a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--gold); transition:width .3s; }
+nav a:hover { color:var(--gold); }
+nav a:hover::after { width:100%; }
+.nav-toggle { display:none; }
+.nav-toggle-label { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.nav-toggle-label span { display:block; width:25px; height:2px; background:var(--cream); transition:all .3s; }
+.mob-menu {
+  display:none; position:fixed; top:0; right:0; width:min(320px,100vw); height:100vh;
+  background:var(--g-deep); z-index:999;
+  flex-direction:column; justify-content:center;
+  padding:4rem 3rem; border-left:1px solid rgba(138,171,144,.22);
+}
+.nav-toggle:checked ~ .mob-menu { display:flex; }
+.nav-toggle:checked ~ .overlay { display:block; }
+.mob-menu a { font-family:'Bebas Neue',sans-serif; font-size:2.5rem; letter-spacing:.1em; color:var(--cream); text-decoration:none; padding:.5rem 0; border-bottom:1px solid rgba(138,171,144,.13); transition:color .2s; }
+.mob-menu a:hover { color:var(--gold); }
+.overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:998; }
+
+/* ===== HERO ===== */
+.hero { position:relative; min-height:calc(100vh - 90px); margin-top:90px; display:grid; grid-template-columns:1fr 1fr; overflow:hidden; }
+
+.hero-left {
+  position:relative; z-index:2;
+  display:flex; flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 4rem;
+}
+.hero-eyebrow {
+  font-family:'Barlow Condensed',sans-serif; font-weight:300; font-size:.68rem; letter-spacing:.42em; text-transform:uppercase;
+  color:var(--g-pale); margin-bottom:1.5rem;
+  display:flex; align-items:center; justify-content:center; gap:1rem;
+}
+.hero-eyebrow::before { content:''; width:36px; height:1px; background:var(--g-pale); flex-shrink:0; }
+.hero-eyebrow::after  { content:''; width:36px; height:1px; background:var(--g-pale); flex-shrink:0; }
+
+.hero-round-logo {
+  max-width: 260px; width:100%; height:auto;
+  margin: 0 auto 2rem auto;
+  display:block;
+  filter:drop-shadow(0 8px 24px rgba(0,0,0,.2));
+}
+.hero-desc {
+  font-size:0.95rem; font-weight:300; line-height:1.7;
+  color:var(--text-lt); max-width:370px; margin-bottom:2.4rem;
+}
+.hero-btn {
+  display:inline-block; font-family:'Barlow Condensed',sans-serif; font-weight:600;
+  font-size:.78rem; letter-spacing:.32em; text-transform:uppercase;
+  color:var(--g-deep); background:var(--cream);
+  padding:.95rem 2.4rem; text-decoration:none; transition:background .3s;
+}
+.hero-btn:hover { background:var(--gold); }
+
+.hero-right { position:relative; overflow:hidden; }
+.hero-right img { width:100%; height:100%; object-fit:cover; object-position:center top; filter:brightness(.72) saturate(.88); }
+.hero-wedge { position:absolute; top:50%; right:-1px; transform:translateY(-50%); width:72px; height:220px; background:var(--g-deep); clip-path:polygon(100% 0,100% 100%,0 50%); z-index:3; }
+
+/* ===== MARQUEE ===== */
+.marquee { background:var(--g-mid); overflow:hidden; padding:.75rem 0; border-top:1px solid rgba(138,171,144,.15); border-bottom:1px solid rgba(138,171,144,.15); }
+.marquee-inner { display:flex; white-space:nowrap; animation:scroll-left 22s linear infinite; width:max-content; }
+.marquee-inner span { font-family:'Barlow Condensed',sans-serif; font-weight:300; font-size:.72rem; letter-spacing:.38em; text-transform:uppercase; color:var(--g-pale); padding:0 2.2rem; }
+.marquee-inner .dot { color:var(--gold); padding:0 .8rem; letter-spacing:0; }
+@keyframes scroll-left { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+/* ===== ABOUT ===== */
+.about { display:grid; grid-template-columns:1fr 1fr; min-height:85vh; }
+.about-imgs { position:relative; overflow:hidden; }
+.about-imgs .img-main { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.78) saturate(.85); }
+.about-imgs .img-float { position:absolute; bottom:2.5rem; right:1.5rem; width:50%; aspect-ratio:3/4; object-fit:cover; border:4px solid var(--g-deep); filter:brightness(.82); }
+.about-content { display:flex; flex-direction:column; justify-content:center; padding:6rem 5rem; background:var(--g-deep); }
+.sec-label { font-family:'Barlow Condensed',sans-serif; font-weight:300; font-size:.68rem; letter-spacing:.38em; text-transform:uppercase; color:var(--g-pale); margin-bottom:1.4rem; display:block; }
+h2.about-h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,5vw,4.5rem); letter-spacing:.08em; line-height:.92; color:var(--warm-white); margin-bottom:.8rem; }
+h2.about-h2 em { display:block; font-family:'Playfair Display', serif; font-weight:400; font-style:italic; font-size:.52em; color:var(--gold); letter-spacing:.05em; }
+.about-content p { font-size:0.95rem; line-height:1.7; color:var(--text-lt); font-weight:300; margin-bottom:1.4rem; max-width:440px; }
+.stats { display:flex; gap:2.5rem; margin-top:2.5rem; padding-top:2.5rem; border-top:1px solid rgba(138,171,144,.18); flex-wrap:wrap; }
+.stat-num { font-family:'Bebas Neue',sans-serif; font-size:2.8rem; color:var(--gold); letter-spacing:.05em; line-height:1; display:block; }
+.stat-lbl { font-family:'Barlow Condensed',sans-serif; font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color:var(--g-pale); margin-top:.3rem; display:block; }
+
+/* ===== GALLERY STRIP ===== */
+.gstrip { display:grid; grid-template-columns:repeat(4,1fr); height:380px; }
+.gitem { position:relative; overflow:hidden; }
+.gitem img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.68) saturate(.82); transition:all .5s; }
+.gitem:hover img { filter:brightness(.88) saturate(1); transform:scale(1.07); }
+.gitem-cap { position:absolute; bottom:1.1rem; left:1.1rem; font-family:'Barlow Condensed',sans-serif; font-size:.68rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(240,234,216,.7); }
+
+/* ===== MENU SECTION — ACCORDION ===== */
+/*
+  DEĞİŞİKLİK: Arka plan background: transparent yapıldı,
+  asıl palmiye görseli ::before pseudo-element'e taşındı.
+  background-attachment: fixed sayesinde liste ne kadar
+  uzarsa uzasın desen kaybolmaz.
+*/
+.menu-sec {
+  position: relative;
+  padding: 8rem 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.menu-sec::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(
+      rgba(15, 15, 15, 0.85),
+      rgba(36, 48, 34, 0.9)
+    ),
+    url("ChatGPT Image.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* iOS Safari fix — fixed attachment mobilde sorun çıkarabilir */
+@media (max-width: 1024px) {
+  .menu-sec::before {
+    background-attachment: scroll;
+  }
+}
+
+.menu-sec-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5rem;
+  align-items: start;
+}
+.menu-heading-block { margin-bottom: 3rem; }
+.menu-heading-block .sec-label { color: var(--g-pale); }
+h2.menu-big-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 7vw, 6rem); letter-spacing: .08em; line-height: .9; color: var(--warm-white); }
+h2.menu-big-title em { display: block; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: .42em; color: var(--gold); letter-spacing: .05em; margin-top: .4rem; }
+details { border-bottom: 1px solid rgba(138,171,144,.2); }
+details:first-of-type { border-top: 1px solid rgba(138,171,144,.2); }
+summary { list-style: none; display: flex; align-items: center; justify-content: space-between; padding: 1.3rem 0; cursor: pointer; font-family: 'Barlow Condensed', sans-serif; font-weight: 500; font-size: 1rem; letter-spacing: .25em; text-transform: uppercase; color: var(--cream); transition: color .25s; user-select: none; }
+summary::-webkit-details-marker { display:none; }
+summary:hover { color: var(--gold); }
+summary::after { content: '+'; font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 300; color: var(--gold); transition: transform .3s ease; flex-shrink: 0; margin-left: 1rem; }
+details[open] > summary::after { transform: rotate(45deg); }
+details[open] > summary { color: var(--gold); }
+.acc-body { padding: .5rem 0 1.8rem; animation: accOpen .3s ease; }
+@keyframes accOpen { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+.mitem { display: flex; align-items: baseline; justify-content: space-between; padding: .7rem 0; border-bottom: 1px solid rgba(138,171,144,.1); }
+.mitem:last-child { border-bottom: none; }
+.mname { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--cream); font-weight: 400; }
+.mprice { font-family: 'Barlow Condensed', sans-serif; font-weight: 500; font-size: .85rem; color: var(--gold); flex-shrink:0; margin-left:1.5rem; }
+
+.disc-acc { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+.disc-item { background:rgba(255,255,255,.04); border:1px solid rgba(138,171,144,.2); padding:1.4rem; }
+.disc-item h4 { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:.1em; color:var(--gold); margin-bottom:.4rem; }
+.disc-item p { font-size:.85rem; color:var(--text-lt); line-height:1.5; }
+.ev-acc { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.ev-item { background:rgba(255,255,255,.04); border:1px solid rgba(138,171,144,.2); padding:1.4rem; }
+.ev-day { font-family:'Barlow Condensed',sans-serif; font-size:.65rem; letter-spacing:.35em; text-transform:uppercase; color:var(--gold); margin-bottom:.3rem; }
+.ev-name { font-family: 'Playfair Display', serif; font-style:italic; font-size:1.25rem; font-weight:400; color:var(--cream); margin-bottom:.3rem; }
+.ev-desc { font-size:.85rem; color:var(--text-lt); }
+.menu-right { position: sticky; top: 110px; padding-left: 4rem; }
+.menu-img-wrap { position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; }
+.menu-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(.85) saturate(.9); }
+.menu-img-label { position: absolute; bottom: 1.5rem; left: 1.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: .68rem; letter-spacing: .35em; text-transform: uppercase; color: rgba(240,234,216,.75); }
+
+/* ===== ATMOSPHERE ===== */
+.atm { padding:8rem 0; background:var(--g-deep); }
+.atm-hdr { padding:0 5rem 4rem; }
+h2.atm-h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,5vw,4.5rem); letter-spacing:.08em; color:var(--warm-white); line-height:1; margin-top:.8rem; }
+h2.atm-h2 span { display:block; font-family:'Playfair Display', serif; font-weight:400; font-style:italic; font-size:.52em; color:var(--g-pale); letter-spacing:.05em; }
+.masonry { display:grid; grid-template-columns:1.4fr 1fr 1fr; grid-template-rows:300px 300px; gap:4px; padding:0 5rem; }
+.mason-item { overflow:hidden; }
+.mason-item.tall { grid-row:span 2; }
+.mason-item img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.72) saturate(.85); transition:all .5s; }
+.mason-item:hover img { filter:brightness(.9) saturate(1); transform:scale(1.05); }
+
+/* ===== EVENTS ===== */
+.evts { background:var(--g-mid); padding:7rem 5rem; display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
+h2.evts-h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,4vw,3.8rem); letter-spacing:.08em; color:var(--warm-white); line-height:1; margin-bottom:1.4rem; }
+.evts > div > p { font-size:0.95rem; line-height:1.7; color:var(--text-lt); font-weight:300; }
+.evcards { display:flex; flex-direction:column; gap:1.4rem; }
+.evcards .evcard { background:rgba(36,48,34,.5); border:1px solid rgba(138,171,144,.22); padding:2rem; transition:border-color .3s; border-left:3px solid transparent; }
+.evcard:hover { border-color:rgba(201,169,110,.4); border-left-color:var(--gold); }
+.evcard-day { font-family:'Barlow Condensed',sans-serif; font-size:.66rem; letter-spacing:.35em; text-transform:uppercase; color:var(--gold); margin-bottom:.4rem; }
+.evcard-title { font-family:'Bebas Neue',sans-serif; font-size:1.7rem; letter-spacing:.1em; color:var(--warm-white); margin-bottom:.4rem; }
+.evcard-desc { font-family: 'Playfair Display', serif; font-style:italic; font-size:1.05rem; color:var(--text-lt); }
+
+/* ===== FIND US ===== */
+.findus { display:grid; grid-template-columns:1fr 1fr; min-height:58vh; }
+.findus-content { display:flex; flex-direction:column; justify-content:center; padding:6rem 5rem; background:var(--g-deep); }
+h2.findus-h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,4vw,3.8rem); letter-spacing:.08em; color:var(--warm-white); margin-bottom:2.5rem; line-height:1; }
+.irow { padding:1.4rem 0; border-bottom:1px solid rgba(138,171,144,.14); }
+.irow:last-child { border-bottom:none; }
+.ilabel { font-family:'Barlow Condensed',sans-serif; font-size:.64rem; letter-spacing:.38em; text-transform:uppercase; color:var(--g-pale); margin-bottom:.35rem; display:block; }
+.ival { font-size:0.95rem; font-weight:300; color:var(--cream); line-height:1.6; }
+.findus-map { overflow:hidden; min-height:380px; }
+.findus-map iframe { width:100%; height:100%; border:none; min-height:380px; filter:grayscale(.2) contrast(.9); }
+
+/* ===== CONTACT ===== */
+/*
+  DEĞİŞİKLİK: Aynı fix burada da uygulandı.
+  background: transparent + ::before ile fixed palmiye.
+*/
+.contact {
+  position: relative;
+  padding: 8rem 5rem;
+  overflow: hidden;
+  background: transparent;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.9),
+      rgba(36, 48, 34, 0.85)
+    ),
+    url("ChatGPT Image.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 1024px) {
+  .contact::before {
+    background-attachment: scroll;
+  }
+}
+
+.contact-inner { 
+  max-width: 750px; 
+  margin: 0 auto; 
+  text-align: center; 
+  position: relative;
+  z-index: 2;
+}
+
+h2.contact-h2 { 
+  font-family: 'Bebas Neue', sans-serif; 
+  font-size: clamp(3rem, 5vw, 4.2rem);
+  letter-spacing: .1em; 
+  color: var(--warm-white); 
+  margin-bottom: 1.2rem; 
+}
+
+.contact-inner > p { 
+  font-size: 1.15rem; 
+  line-height: 1.7; 
+  color: var(--cream); 
+  font-weight: 300; 
+  margin-bottom: 3.5rem; 
+}
+
+.cform { display: flex; flex-direction: column; gap: 1.5rem; text-align: left; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+.fg { display: flex; flex-direction: column; gap: .6rem; }
+.fg label { 
+  font-family: 'Barlow Condensed', sans-serif; 
+  font-size: 0.85rem;
+  letter-spacing: .25em; 
+  text-transform: uppercase; 
+  color: var(--gold);
+}
+
+.fg input, 
+.fg textarea, 
+.fg select { 
+  background: rgb(11, 11, 11); 
+  border: 1px solid rgb(42, 39, 39); 
+  color: var(--warm-white); 
+  padding: 1.1rem 1.3rem;
+  font-family: 'DM Sans', sans-serif; 
+  font-size: 1.05rem;
+  font-weight: 300; 
+  outline: none; 
+  transition: border-color .3s, background-color .3s; 
+  appearance: none; 
+  -webkit-appearance: none; 
+  border-radius: 0; 
+}
+
+.fg input:focus, .fg textarea:focus, .fg select:focus { 
+  border-color: var(--gold); 
+  background: rgb(52, 49, 49);
+}
+
+.fg textarea { min-height: 140px; resize: vertical; }
+.fg select option { background: var(--g-deep); color: var(--cream); }
+.fg input::placeholder, .fg textarea::placeholder { color: rgba(240, 234, 216, 0.45); }
+
+.submit-btn { 
+  font-family: 'Barlow Condensed', sans-serif; 
+  font-weight: 600; 
+  font-size: 0.95rem; 
+  letter-spacing: .32em; 
+  text-transform: uppercase; 
+  color: var(--g-deep); 
+  background: var(--cream); 
+  border: none; 
+  padding: 1.25rem 3.5rem; 
+  cursor: pointer; 
+  align-self: flex-start; 
+  transition: background .3s, color .3s; 
+}
+
+.submit-btn:hover { 
+  background: var(--gold); 
+  color: var(--g-deep);
+}
+
+/* ===== FOOTER ===== */
+footer { background:var(--g-deep); border-top:1px solid rgba(138,171,144,.12); padding:3.2rem 5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; }
+.ft-center { font-family:'Barlow Condensed',sans-serif; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--g-pale); text-align:center; }
+.ft-center p + p { margin-top:.3rem; }
+.ft-right { display:flex; gap:1.4rem; }
+.ft-right a { font-family:'Barlow Condensed',sans-serif; font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--g-pale); text-decoration:none; transition:color .2s; }
+.ft-right a:hover { color:var(--gold); }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px) {
+  header { padding:1rem 1.5rem; }
+  nav { display:none; }
+  .nav-toggle-label { display:flex; }
+
+  .hero { grid-template-columns:1fr; }
+  .hero-right { display:none; }
+  .hero-left { justify-content:center; align-items:center; text-align:center; padding:4rem 2.5rem; min-height:calc(100vh - 90px); background:linear-gradient(to top, var(--g-deep) 55%, rgba(36,48,34,.6) 100%); position:relative; }
+  .hero::before { content:''; position:absolute; inset:0; z-index:0; background:url("images/interior-green.png") center/cover no-repeat; filter:brightness(.3); }
+  .hero-left { z-index:2; }
+  .hero-wedge { display:none; }
+
+  .about { grid-template-columns:1fr; }
+  .about-imgs { height:55vh; min-height:300px; }
+  .about-content { padding:4rem 2.5rem; }
+  .about-content p { max-width:100%; }
+
+  .gstrip { grid-template-columns:repeat(2,1fr); height:460px; }
+
+  .menu-sec-inner { grid-template-columns:1fr; padding:0 2rem; }
+  .menu-right { position:static; padding-left:0; margin-top:3rem; }
+  .menu-img-wrap { aspect-ratio:16/9; }
+
+  .atm-hdr { padding:0 2.5rem 3rem; }
+  .masonry { grid-template-columns:1fr 1fr; grid-template-rows:240px 240px 240px; padding:0 2.5rem; }
+  .mason-item.tall { grid-row:span 1; }
+
+  .evts { grid-template-columns:1fr; gap:3rem; padding:5rem 2.5rem; }
+  .findus { grid-template-columns:1fr; }
+  .findus-content { padding:4rem 2.5rem; }
+  .findus-map { min-height:300px; }
+  .contact { padding:6rem 2.5rem; }
+  .frow { grid-template-columns:1fr; }
+  footer { padding:2.5rem 2rem; flex-direction:column; align-items:flex-start; }
+  .disc-acc, .ev-acc { grid-template-columns:1fr; }
+}
+
+@media(max-width:640px) {
+  .gstrip { grid-template-columns:repeat(2,1fr); height:380px; }
+  .masonry { grid-template-columns:1fr; grid-template-rows:repeat(5,200px); padding:0 1.5rem; }
+  .evts { padding:4rem 1.5rem; gap:2rem; }
+  .contact { padding:5rem 1.5rem; }
+  .findus-content { padding:3.5rem 1.5rem; }
+  .atm-hdr { padding:0 1.5rem 2.5rem; }
+  .stats { gap:1.5rem; }
+  .menu-sec { padding:5rem 0; }
+  .menu-sec-inner { padding:0 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="intro-splash" aria-hidden="true">
+  <img src="logo2.png" alt="Palm Coffee Co.">
+  <div class="intro-line"></div>
+  <span class="intro-tagline">Eskişehir · Odunpazarı</span>
+</div>
+
+<div class="page-content">
+
+<header>
+  <a href="#" class="logo" aria-label="Palm Coffee Co.">
+    <img src="logo2.png" alt="Palm Coffee Co. Logo" class="nav-round-logo">
+  </a>
+  <nav aria-label="Ana navigasyon">
+    <a href="#hakkinda">Hakkında</a>
+    <a href="#menu">Menü</a>
+    <a href="#atmosfer">Atmosfer</a>
+    <a href="#iletisim">İletişim</a>
+  </nav>
+  <input type="checkbox" id="nav-chk" class="nav-toggle" aria-hidden="true">
+  <label for="nav-chk" class="nav-toggle-label" aria-label="Menüyü aç">
+    <span></span><span></span><span></span>
+  </label>
+</header>
+
+<label for="nav-chk" class="overlay" aria-hidden="true"></label>
+<nav class="mob-menu" aria-label="Mobil navigasyon">
+  <a href="#hakkinda">Hakkında</a>
+  <a href="#menu">Menü</a>
+  <a href="#atmosfer">Atmosfer</a>
+  <a href="#iletisim">İletişim</a>
+</nav>
+
+<section class="hero" aria-label="Ana görsel">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Eskişehir · Odunpazarı</p>
+    <h1 class="hero-h1">
+      <img src="logo2.png" alt="Palm Coffee Co." class="hero-round-logo">
+    </h1>
+    <p class="hero-desc">Kahvenin doğasına saygı duyulan, yeşilin huzuruyla sarılı bir köşe. Her fincan, el emeği ve özenin buluşma noktası.</p>
+    <a href="#menu" class="hero-btn">Menüyü Keşfet</a>
+  </div>
+  <div class="hero-right" aria-hidden="true">
+    <img src="görsel2.png" alt="Palm Coffee Co. yeşil iç mekan">
+    <div class="hero-wedge"></div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-inner">
+    <span>Specialty Coffee</span><span class="dot">·</span>
+    <span>Hand-Brewed Filter</span><span class="dot">·</span>
+    <span>Matcha Serisi</span><span class="dot">·</span>
+    <span>Oyun Geceleri</span><span class="dot">·</span>
+    <span>Film Geceleri</span><span class="dot">·</span>
+    <span>Ev Yapımı Tatlılar</span><span class="dot">·</span>
+    <span>Öğrenci İndirimi</span><span class="dot">·</span>
+    <span>Specialty Coffee</span><span class="dot">·</span>
+    <span>Hand-Brewed Filter</span><span class="dot">·</span>
+    <span>Matcha Serisi</span><span class="dot">·</span>
+    <span>Oyun Geceleri</span><span class="dot">·</span>
+    <span>Film Geceleri</span><span class="dot">·</span>
+    <span>Ev Yapımı Tatlılar</span><span class="dot">·</span>
+    <span>Öğrenci İndirimi</span><span class="dot">·</span>
+  </div>
+</div>
+
+<section class="about" id="hakkinda" aria-labelledby="about-h">
+  <div class="about-imgs">
+    <img src="görsel1.png" alt="Cold Brew hazırlama" class="img-main" loading="lazy">
+  </div>
+  <div class="about-content">
+    <span class="sec-label">Hikayemiz</span>
+    <h2 class="about-h2" id="about-h">BİR YUDUM<em>özen, bir avuç huzur</em></h2>
+    <p>Palm Coffee Co., kahveye olan sevgimizin somutlaştığı bir mekandır. Atatürk Bulvarı'ndaki yeşil köşemizde her içeceği dikkatle hazırlıyor, her misafirimizi ev sıcaklığıyla karşılıyoruz.</p>
+    <p>El yapımı filtre kahveden buz gibi matcha serilerinden tatlılara kadar — her detay düşünülmüş, her an özel kılınmış.</p>
+    <div class="stats">
+      <div><span class="stat-num">50+</span><span class="stat-lbl">Menü Kalemi</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="gstrip" aria-label="Galeri">
+  <div class="gitem">
+    <img src="görsel11.png" alt="Ice Matcha içecekleri" loading="lazy">
+    <span class="gitem-cap">Matcha Serisi</span>
+  </div>
+  <div class="gitem">
+    <img src="görsel6.png" alt="Filtre kahve hazırlama" loading="lazy">
+    <span class="gitem-cap">El Yapımı Filtre</span>
+  </div>
+  <div class="gitem">
+    <img src="görsel12.png" alt="Ev yapımı tatlılar" loading="lazy">
+    <span class="gitem-cap">Tatlılar</span>
+  </div>
+  <div class="gitem">
+    <img src="görsel2.png" alt="Palm Coffee Co. tabelası" loading="lazy">
+    <span class="gitem-cap">Palm Co.</span>
+  </div>
+</div>
+
+<section class="menu-sec" id="menu" aria-labelledby="menu-h">
+  <div class="menu-sec-inner">
+    <div class="menu-left">
+      <div class="menu-heading-block">
+        <span class="sec-label">Ne İçmek İstersiniz?</span>
+        <h2 class="menu-big-title" id="menu-h">MENÜMÜZ</h2>
+      </div>
+
+      <details>
+        <summary>Sıcak Kahveler</summary>
+        <div class="acc-body">
+          <div class="mitem"><span class="mname">Americano</span><span class="mprice">140 ₺</span></div>
+          <div class="mitem"><span class="mname">Latte</span><span class="mprice">160 ₺</span></div>
+          <div class="mitem"><span class="mname">Flat White</span><span class="mprice">160 ₺</span></div>
+          <div class="mitem"><span class="mname">Cortado</span><span class="mprice">160 ₺</span></div>
+          <div class="mitem"><span class="mname">Cappuccino</span><span class="mprice">140 ₺</span></div>
+          <div class="mitem"><span class="mname">Filtre Kahve</span><span class="mprice">130 ₺</span></div>
+          <div class="mitem"><span class="mname">Sütlü Filtre Kahve</span><span class="mprice">130 ₺</span></div>
+          <div class="mitem"><span class="mname">Espresso (tek / çift)</span><span class="mprice">100–120 ₺</span></div>
+          <div class="mitem"><span class="mname">Türk Kahvesi (tek / çift)</span><span class="mprice">90–150 ₺</span></div>
+          <div class="mitem"><span class="mname">Espresso Macchiato</span><span class="mprice">140 ₺</span></div>
+          <div class="mitem"><span class="mname">Caramel Macchiato</span><span class="mprice">180 ₺</span></div>
+          <div class="mitem"><span class="mname">Mocha</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">White Mocha</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Caramel Latte</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Vanilla Latte</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Toffee Nut Latte</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Black Eye</span><span class="mprice">160 ₺</span></div>
+          <div class="mitem"><span class="mname">Red Eye</span><span class="mprice">150 ₺</span></div>
+          <div class="mitem"><span class="mname">Dead Eye</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Lungo Espresso</span><span class="mprice">110 ₺</span></div>
+          <div class="mitem"><span class="mname">Espresso Con Panna (tek/çift)</span><span class="mprice">120–180 ₺</span></div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Soğuk Kahveler</summary>
+        <div class="acc-body">
+          <div class="mitem"><span class="mname">Ice Americano</span><span class="mprice">150 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Latte</span><span class="mprice">160 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Flat White</span><span class="mprice">160 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Cortado</span><span class="mprice">160 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Filtre Kahve</span><span class="mprice">130 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Sütlü Filtre Kahve</span><span class="mprice">140 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Mocha</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice White Mocha</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Caramel Latte</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Vanilla Latte</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Toffee Nut Latte</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Cold Brew Latte</span><span class="mprice">150 ₺</span></div>
+          <div class="mitem"><span class="mname">Cold Brew</span><span class="mprice">140 ₺</span></div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Çaylar &amp; Diğer İçecekler</summary>
+        <div class="acc-body">
+          <div class="mitem"><span class="mname">Fincan Çay</span><span class="mprice">70 ₺</span></div>
+          <div class="mitem"><span class="mname">Ada Çayı</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Kış Çayı</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Hibiscus Çayı</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Papatya Çayı</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Yeşil Çay</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Sıcak Çikolata</span><span class="mprice">130 ₺</span></div>
+          <div class="mitem"><span class="mname">Chai Tea Latte</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Sahlep</span><span class="mprice">130 ₺</span></div>
+          <div class="mitem"><span class="mname">Sıcak Matcha</span><span class="mprice">180 ₺</span></div>
+          <div class="mitem"><span class="mname">Ihlamur</span><span class="mprice">130 ₺</span></div>
+          <div class="mitem"><span class="mname">Su</span><span class="mprice">35 ₺</span></div>
+          <div class="mitem"><span class="mname">Beyoğlu Gazozu</span><span class="mprice">90 ₺</span></div>
+          <div class="mitem"><span class="mname">Soda</span><span class="mprice">70 ₺</span></div>
+          <div class="mitem"><span class="mname">Churchill</span><span class="mprice">90 ₺</span></div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Soğuk İçecekler</summary>
+        <div class="acc-body">
+          <div class="mitem"><span class="mname">Limonata</span><span class="mprice">130 ₺</span></div>
+          <div class="mitem"><span class="mname">Mango Limonata</span><span class="mprice">150 ₺</span></div>
+          <div class="mitem"><span class="mname">Strawberry Limonata</span><span class="mprice">150 ₺</span></div>
+          <div class="mitem"><span class="mname">Yeşil Elma Frozen</span><span class="mprice">160 ₺</span></div>
+          <div class="mitem"><span class="mname">Orman Meyveli Frozen</span><span class="mprice">160 ₺</span></div>
+          <div class="mitem"><span class="mname">Karpuz Frozen</span><span class="mprice">160 ₺</span></div>
+          <div class="mitem"><span class="mname">Mango Frozen</span><span class="mprice">160 ₺</span></div>
+          <div class="mitem"><span class="mname">Kavun + Muz Frozen</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Berry Hibiscus</span><span class="mprice">150 ₺</span></div>
+          <div class="mitem"><span class="mname">Cool Lime</span><span class="mprice">150 ₺</span></div>
+          <div class="mitem"><span class="mname">Çilekli Milkshake</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Çikolatalı Milkshake</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Muzlu Milkshake</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Vanilyalı Milkshake</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Chocolate Frappe</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Vanilla Frappe</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Coconut Frappe</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Caramel Frappe</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Matcha</span><span class="mprice">190 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Matcha Mango</span><span class="mprice">210 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Matcha Karadut</span><span class="mprice">210 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Matcha Böğürtlen</span><span class="mprice">210 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Matcha Çilek</span><span class="mprice">210 ₺</span></div>
+          <div class="mitem"><span class="mname">Ice Matcha Vanilla</span><span class="mprice">210 ₺</span></div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Tatlılar &amp; Sandviçler</summary>
+        <div class="acc-body">
+          <div class="mitem"><span class="mname">Latte Cake</span><span class="mprice">200 ₺</span></div>
+          <div class="mitem"><span class="mname">Limonlu Cheesecake</span><span class="mprice">210 ₺</span></div>
+          <div class="mitem"><span class="mname">Frambuazlı Cheesecake</span><span class="mprice">210 ₺</span></div>
+          <div class="mitem"><span class="mname">San Sebastian</span><span class="mprice">220 ₺</span></div>
+          <div class="mitem"><span class="mname">Brownie</span><span class="mprice">190 ₺</span></div>
+          <div class="mitem"><span class="mname">Cookies</span><span class="mprice">150 ₺</span></div>
+          <div class="mitem"><span class="mname">Magnolia</span><span class="mprice">190 ₺</span></div>
+          <div class="mitem"><span class="mname">Hindi Füme Sandviç</span><span class="mprice">190 ₺</span></div>
+          <div class="mitem"><span class="mname">Karışık Soğuk Sandviç</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">3 Peynirli Soğuk Sandviç</span><span class="mprice">170 ₺</span></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="menu-right">
+      <div class="menu-img-wrap">
+        <img src="görsel15.png" alt="Palm Coffee Co. menü görseli" loading="lazy">
+        <span class="menu-img-label">Palm Coffee Co.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="atm" id="atmosfer" aria-labelledby="atm-h">
+  <div class="atm-hdr">
+    <span class="sec-label">Mekanımız</span>
+    <h2 class="atm-h2" id="atm-h">ATMOSFER<span>yeşilin huzuru içinde</span></h2>
+  </div>
+  <div class="masonry">
+    <div class="mason-item tall">
+      <img src="görsel14.png" loading="lazy">
+    </div>
+    <div class="mason-item">
+      <img src="görsel3.png" loading="lazy">
+    </div>
+    <div class="mason-item">
+      <img src="görsel11.png" loading="lazy">
+    </div>
+    <div class="mason-item">
+      <img src="görsel4.png"  loading="lazy">
+    </div>
+    <div class="mason-item">
+      <img src="görsel8.png" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="findus" aria-labelledby="findus-h">
+  <div class="findus-content">
+    <span class="sec-label">Bizi Bulun</span>
+    <h2 class="findus-h2" id="findus-h">NEREDEYIZ?</h2>
+    <div>
+      <div class="irow">
+        <span class="ilabel">Adres</span>
+        <span class="ival">Vişnelik, Atatürk Bulvarı No: 169B<br>26020 Odunpazarı / Eskişehir</span>
+      </div>
+      <div class="irow">
+        <span class="ilabel">Çalışma Saatleri</span>
+        <span class="ival">☕️ 10:00-00:00 <br>
+                           🥙 10:00-21:00
+                          </span>
+      </div>
+    </div>
+  </div>
+  <div class="findus-map">
+    <iframe
+      title="Palm Coffee Co. harita konumu"
+      src="https://maps.google.com/maps?q=Vişnelik,%20Atatürk%20Bulvarı%20No:%20169B,%20Odunpazarı/Eskişehir&t=&z=16&ie=UTF8&iwloc=B&output=embed"
+      loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<section class="contact" id="iletisim" aria-labelledby="contact-h">
+  <div class="contact-inner">
+    <span class="sec-label">İletişim</span>
+    <h2 class="contact-h2" id="contact-h">BİZE ULAŞIN</h2>
+    <p>Rezervasyon, organizasyon teklifi veya herhangi bir sorunuz için aşağıdan mesaj bırakın.</p>
+   <form class="cform" action="https://api.web3forms.com/submit" method="POST">
+  
+  <input type="hidden" name="access_key" value="BURAYA_WEB3FORMS_ANAHTARINI_YAZ">
+
+  <div class="frow">
+    <div class="fg">
+      <label for="name">Adınız</label>
+      <input type="text" id="name" name="name" placeholder="Adınız Soyadınız" required autocomplete="name">
+    </div>
+    <div class="fg">
+      <label for="email">E-posta</label>
+      <input type="email" id="email" name="email" placeholder="ornek@email.com" required autocomplete="email">
+    </div>
+  </div>
+  <div class="fg">
+    <label for="subject">Konu</label>
+    <select id="subject" name="subject" required>
+      <option value="" disabled selected>Konu seçin</option>
+      <option value="rezervasyon">Rezervasyon</option>
+      <option value="organizasyon">Organizasyon Teklifi</option>
+      <option value="genel">Genel Soru</option>
+      <option value="diger">Diğer</option>
+    </select>
+  </div>
+  <div class="fg">
+    <label for="message">Mesajınız</label>
+    <textarea id="message" name="message" placeholder="Mesajınızı buraya yazın..." required></textarea>
+  </div>
+  <button type="submit" class="submit-btn">Mesaj Gönder</button>
+</form>
+<div class="contact-phone-block">
+  <span class="phone-label">Doğrudan İletişim</span>
+  <a href="tel:+905392492296" class="phone-link">
+    <span class="phone-icon">📞</span> 0539 249 22 96
+  </a>
+</div>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="logo" aria-label="Sayfanın başına dön">
+    <img src="logo2.png" alt="Palm Coffee Co. Logo" class="nav-round-logo">
+  </a>
+  <div class="ft-center">
+    <p>© 2026 Palm Coffee Co. · Eskişehir, Odunpazarı</p>
+    <p>Vişnelik, Atatürk Bulvarı No: 169B</p>
+  </div>
+  <div class="ft-right">
+    <a href="#menu">Menü</a>
+    <a href="#iletisim">İletişim</a>
+  </div>
+</footer>
+
+</div><script>
+/* -----------------------------------------
+   1) SCROLL EFEKTI - Header küçülür + aktif nav linki
+   ----------------------------------------- */
+const header = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  let current = '';
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 120) {
+      current = sec.getAttribute('id');
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+}, { passive: true });
+
+
+/* -----------------------------------------
+   2) SCROLL REVEAL - Elementler asagidan yukari belirir
+   ----------------------------------------- */
+const revealEls = document.querySelectorAll(
+  '.about-content, .about-imgs, .evcard, .irow, .mason-item, .gitem, .stat-num, .menu-heading-block, details'
+);
+
+revealEls.forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(28px)';
+  el.style.transition = 'opacity 0.6s ease ' + (i % 4) * 0.1 + 's, transform 0.6s ease ' + (i % 4) * 0.1 + 's';
+});
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach(el => revealObserver.observe(el));
+
+
+/* -----------------------------------------
+   3) GALERİ LİGHTBOX MODAL
+   ----------------------------------------- */
+const modal = document.createElement('div');
+modal.id = 'lightbox';
+modal.setAttribute('role', 'dialog');
+modal.setAttribute('aria-modal', 'true');
+modal.setAttribute('aria-label', 'Görsel büyütme');
+modal.innerHTML = '<div id="lb-backdrop"></div><div id="lb-content"><img id="lb-img" src="" alt=""><span id="lb-caption"></span><button id="lb-close" aria-label="Kapat">✕</button><button id="lb-prev" aria-label="Önceki">‹</button><button id="lb-next" aria-label="Sonraki">›</button></div>';
+document.body.appendChild(modal);
+
+const lbStyle = document.createElement('style');
+lbStyle.textContent = `
+  #lightbox {
+    display: none; position: fixed; inset: 0; z-index: 9000;
+    align-items: center; justify-content: center;
+  }
+  #lightbox.open { display: flex; }
+  #lb-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(10, 14, 10, 0.92);
+    animation: lbFadeIn .3s ease;
+  }
+  #lb-content {
+    position: relative; z-index: 1;
+    max-width: min(90vw, 900px); max-height: 90vh;
+    display: flex; flex-direction: column; align-items: center; gap: .75rem;
+    animation: lbZoomIn .35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  #lb-img {
+    max-width: 100%; max-height: 78vh;
+    object-fit: contain; display: block;
+    border: 1px solid rgba(201,169,110,.2);
+    box-shadow: 0 32px 80px rgba(0,0,0,.7);
+  }
+  #lb-caption {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .7rem; letter-spacing: .3em; text-transform: uppercase;
+    color: rgba(201,169,110,.8);
+  }
+  #lb-close {
+    position: absolute; top: -2.5rem; right: 0;
+    background: none; border: none; color: var(--cream);
+    font-size: 1.4rem; cursor: pointer; line-height: 1;
+    transition: color .2s; padding: .3rem .6rem;
+  }
+  #lb-close:hover { color: var(--gold); }
+  #lb-prev, #lb-next {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(36,48,34,.7); border: 1px solid rgba(138,171,144,.25);
+    color: var(--cream); font-size: 2rem; cursor: pointer;
+    padding: .4rem .9rem; line-height: 1; transition: all .2s;
+  }
+  #lb-prev { left: -4.5rem; }
+  #lb-next { right: -4.5rem; }
+  #lb-prev:hover, #lb-next:hover { background: var(--g-mid); color: var(--gold); }
+  @media(max-width: 768px) {
+    #lb-prev { left: .5rem; }
+    #lb-next { right: .5rem; }
+  }
+  @keyframes lbFadeIn { from { opacity:0; } to { opacity:1; } }
+  @keyframes lbZoomIn { from { opacity:0; transform:scale(.88); } to { opacity:1; transform:scale(1); } }
+
+  header.scrolled { padding: .65rem 3.5rem; box-shadow: 0 4px 30px rgba(0,0,0,.35); }
+  header { transition: padding .3s ease, box-shadow .3s ease; }
+  nav a.active { color: var(--gold); }
+  nav a.active::after { width: 100%; }
+
+  #back-to-top {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 800;
+    width: 44px; height: 44px;
+    background: var(--g-mid); border: 1px solid rgba(138,171,144,.3);
+    color: var(--cream); font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; opacity: 0; pointer-events: none;
+    transition: all .3s ease; transform: translateY(10px);
+  }
+  #back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  #back-to-top:hover { background: var(--gold); color: var(--g-deep); }
+`;
+document.head.appendChild(lbStyle);
+
+const galleryImgs = Array.from(document.querySelectorAll('.gitem img, .mason-item img'));
+let currentIdx = 0;
+
+galleryImgs.forEach((img, idx) => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', () => openLightbox(idx));
+});
+
+function openLightbox(idx) {
+  currentIdx = idx;
+  const img = galleryImgs[idx];
+  document.getElementById('lb-img').src = img.src;
+  document.getElementById('lb-img').alt = img.alt;
+  const capEl = img.closest('.gitem') && img.closest('.gitem').querySelector('.gitem-cap');
+  document.getElementById('lb-caption').textContent = capEl ? capEl.textContent : img.alt;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('lb-close').addEventListener('click', closeLightbox);
+document.getElementById('lb-backdrop').addEventListener('click', closeLightbox);
+document.getElementById('lb-prev').addEventListener('click', () => {
+  currentIdx = (currentIdx - 1 + galleryImgs.length) % galleryImgs.length;
+  openLightbox(currentIdx);
+});
+document.getElementById('lb-next').addEventListener('click', () => {
+  currentIdx = (currentIdx + 1) % galleryImgs.length;
+  openLightbox(currentIdx);
+});
+document.addEventListener('keydown', (e) => {
+  if (!modal.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') document.getElementById('lb-prev').click();
+  if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
+});
+
+
+/* -----------------------------------------
+   4) BACK TO TOP BUTONU
+   ----------------------------------------- */
+const btt = document.createElement('button');
+btt.id = 'back-to-top';
+btt.setAttribute('aria-label', 'Sayfanın başına dön');
+btt.innerHTML = '↑';
+document.body.appendChild(btt);
+
+btt.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+
+</script>
+</body>
+</html>
