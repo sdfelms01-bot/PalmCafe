@@ -95,12 +95,7 @@ nav a:hover::after { width:100%; }
 .hero-right img { width:100%; height:100%; object-fit:cover; object-position:center top; filter:brightness(.72) saturate(.88); }
 .hero-wedge { position:absolute; top:50%; right:-1px; transform:translateY(-50%); width:72px; height:220px; background:transparent; clip-path:polygon(100% 0,100% 100%,0 50%); z-index:3; }
 
-/* ===== MARQUEE ===== */
-.marquee { background:rgba(53,76,56,0.75); overflow:hidden; padding:.75rem 0; border-top:1px solid rgba(138,171,144,.15); border-bottom:1px solid rgba(138,171,144,.15); backdrop-filter:blur(6px); }
-.marquee-inner { display:flex; white-space:nowrap; animation:scroll-left 22s linear infinite; width:max-content; }
-.marquee-inner span { font-family:'Barlow Condensed',sans-serif; font-weight:300; font-size:.72rem; letter-spacing:.38em; text-transform:uppercase; color:var(--g-pale); padding:0 2.2rem; }
-.marquee-inner .dot { color:var(--gold); padding:0 .8rem; letter-spacing:0; }
-@keyframes scroll-left { from{transform:translateX(0);}to{transform:translateX(-50%);} }
+
 
 /* ===== ABOUT ===== */
 .about { display:grid; grid-template-columns:1fr 1fr; min-height:85vh; }
@@ -185,6 +180,34 @@ h2.contact-h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,5vw,4.
 .fg input::placeholder,.fg textarea::placeholder { color:rgba(240,234,216,0.45); }
 .submit-btn { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:.95rem; letter-spacing:.32em; text-transform:uppercase; color:var(--g-deep); background:var(--cream); border:none; padding:1.25rem 3.5rem; cursor:pointer; align-self:flex-start; transition:background .3s,color .3s; }
 .submit-btn:hover { background:var(--gold); color:var(--g-deep); }
+
+/* ===== SOCIAL BLOCK ===== */
+.social-block {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(138,171,144,.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.social-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .68rem; letter-spacing: .38em; text-transform: uppercase;
+  color: var(--g-pale); display: block;
+}
+.ig-link {
+  display: inline-flex; align-items: center; gap: .7rem;
+  text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 500;
+  font-size: 1rem; letter-spacing: .12em;
+  color: var(--cream);
+  border: 1px solid rgba(201,169,110,.3);
+  padding: .7rem 1.5rem;
+  transition: all .3s;
+}
+.ig-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,169,110,.06); }
+.ig-icon { width: 20px; height: 20px; flex-shrink: 0; }
 
 /* ===== FOOTER ===== */
 footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:1px solid rgba(138,171,144,.12); padding:3.2rem 5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; }
@@ -291,25 +314,7 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
   </div>
 </section>
 
-<!-- ===== MARQUEE ===== -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-inner">
-    <span data-tr="Specialty Coffee" data-en="Specialty Coffee">Specialty Coffee</span><span class="dot">·</span>
-    <span data-tr="El Yapımı Filtre" data-en="Hand-Brewed Filter">Hand-Brewed Filter</span><span class="dot">·</span>
-    <span data-tr="Matcha Serisi" data-en="Matcha Series">Matcha Serisi</span><span class="dot">·</span>
-    <span data-tr="Oyun Geceleri" data-en="Game Nights">Oyun Geceleri</span><span class="dot">·</span>
-    <span data-tr="Film Geceleri" data-en="Movie Nights">Film Geceleri</span><span class="dot">·</span>
-    <span data-tr="Ev Yapımı Tatlılar" data-en="Homemade Desserts">Ev Yapımı Tatlılar</span><span class="dot">·</span>
-    <span data-tr="Öğrenci İndirimi" data-en="Student Discount">Öğrenci İndirimi</span><span class="dot">·</span>
-    <span data-tr="Specialty Coffee" data-en="Specialty Coffee">Specialty Coffee</span><span class="dot">·</span>
-    <span data-tr="El Yapımı Filtre" data-en="Hand-Brewed Filter">Hand-Brewed Filter</span><span class="dot">·</span>
-    <span data-tr="Matcha Serisi" data-en="Matcha Series">Matcha Serisi</span><span class="dot">·</span>
-    <span data-tr="Oyun Geceleri" data-en="Game Nights">Oyun Geceleri</span><span class="dot">·</span>
-    <span data-tr="Film Geceleri" data-en="Movie Nights">Film Geceleri</span><span class="dot">·</span>
-    <span data-tr="Ev Yapımı Tatlılar" data-en="Homemade Desserts">Ev Yapımı Tatlılar</span><span class="dot">·</span>
-    <span data-tr="Öğrenci İndirimi" data-en="Student Discount">Öğrenci İndirimi</span><span class="dot">·</span>
-  </div>
-</div>
+
 
 <!-- ===== ABOUT ===== -->
 <section class="about" id="hakkinda" aria-labelledby="about-h">
@@ -540,9 +545,22 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
       </div>
       <button type="submit" class="submit-btn" data-tr="Mesaj Gönder" data-en="Send Message">Mesaj Gönder</button>
     </form>
-    <div class="contact-phone-block">
+    
+
+    <div class="social-block">
+      <span class="social-label" data-tr="Hesaplarımız" data-en="Our Accounts">Hesaplarımız</span>
+      <a href="https://www.instagram.com/palmcoffeeco/" target="_blank" rel="noopener" class="ig-link">
+        <svg class="ig-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor" stroke-width="1.8"/>
+          <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/>
+          <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/>
+        </svg>
+        <span>@palmcoffeeco</span>
+      </a>
+      <div class="contact-phone-block">
       <span class="phone-label" data-tr="Doğrudan İletişim" data-en="Direct Contact">Doğrudan İletişim</span>
-      <a href="tel:+905392492296" class="phone-link"><span class="phone-icon">📞</span> 0539 249 22 96</a>
+      <a href="tel:+905392492296" class="phone-link"><span class="phone-icon"></span> 0539 249 22 96</a>
+    </div>
     </div>
   </div>
 </section>
