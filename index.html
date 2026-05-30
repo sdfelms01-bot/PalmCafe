@@ -29,7 +29,6 @@ body { color:var(--cream); font-family:'DM Sans',sans-serif; font-weight:300; ov
 ::-webkit-scrollbar-track { background:var(--g-deep); }
 ::-webkit-scrollbar-thumb { background:var(--g-light); border-radius:3px; }
 
-/* ===== LANG TOGGLE ===== */
 .lang-toggle {
   display:flex; align-items:center; gap:0;
   border:1px solid rgba(201,169,110,.35); overflow:hidden;
@@ -43,7 +42,7 @@ body { color:var(--cream); font-family:'DM Sans',sans-serif; font-weight:300; ov
 .lang-btn.active { background:var(--gold); color:var(--g-deep); }
 .lang-btn:not(.active):hover { color:var(--gold); }
 
-/* ===== INTRO SPLASH ===== */
+
 .intro-splash {
   position:fixed; inset:0; z-index:9999; background:var(--g-deep);
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem;
@@ -59,7 +58,7 @@ body { color:var(--cream); font-family:'DM Sans',sans-serif; font-weight:300; ov
 .page-content { animation:contentReveal 0.5s ease 3.4s both; }
 @keyframes contentReveal { from{opacity:0;}to{opacity:1;} }
 
-/* ===== HEADER ===== */
+
 header { position:fixed; top:0; left:0; width:100%; z-index:1000; padding:1.1rem 3.5rem; display:flex; align-items:center; justify-content:space-between; background:rgba(36,48,34,0.92); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(138,171,144,.18); }
 .logo { display:flex; flex-direction:column; text-decoration:none; line-height:1; }
 .nav-round-logo { max-height:55px; width:auto; display:block; transition:transform .3s; }
@@ -74,14 +73,14 @@ nav a:hover::after { width:100%; }
 .nav-toggle-label { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
 .nav-toggle-label span { display:block; width:25px; height:2px; background:var(--cream); transition:all .3s; }
 .mob-menu { display:none; position:fixed; top:0; right:0; width:min(320px,100vw); height:100vh; background:var(--g-deep); z-index:999; flex-direction:column; justify-content:center; padding:4rem 3rem; border-left:1px solid rgba(138,171,144,.22); }
-.nav-toggle:checked ~ .mob-menu { display:flex; }
-.nav-toggle:checked ~ .overlay { display:block; }
+.mob-menu.open { display:flex; }
 .mob-menu a { font-family:'Bebas Neue',sans-serif; font-size:2.5rem; letter-spacing:.1em; color:var(--cream); text-decoration:none; padding:.5rem 0; border-bottom:1px solid rgba(138,171,144,.13); transition:color .2s; }
 .mob-menu a:hover { color:var(--gold); }
 .mob-lang { display:flex; margin-top:2rem; }
 .overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:998; }
+.overlay.open { display:block; }
 
-/* ===== HERO ===== */
+
 .hero { position:relative; min-height:calc(100vh - 90px); margin-top:90px; display:grid; grid-template-columns:1fr 1fr; overflow:hidden; }
 .hero-left { position:relative; z-index:2; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:2rem 4rem; background:transparent; }
 .hero-eyebrow { font-family:'Barlow Condensed',sans-serif; font-weight:300; font-size:.68rem; letter-spacing:.42em; text-transform:uppercase; color:var(--g-pale); margin-bottom:1.5rem; display:flex; align-items:center; justify-content:center; gap:1rem; }
@@ -95,9 +94,6 @@ nav a:hover::after { width:100%; }
 .hero-right img { width:100%; height:100%; object-fit:cover; object-position:center top; filter:brightness(.72) saturate(.88); }
 .hero-wedge { position:absolute; top:50%; right:-1px; transform:translateY(-50%); width:72px; height:220px; background:transparent; clip-path:polygon(100% 0,100% 100%,0 50%); z-index:3; }
 
-
-
-/* ===== ABOUT ===== */
 .about { display:grid; grid-template-columns:1fr 1fr; min-height:85vh; }
 .about-imgs { position:relative; overflow:hidden; }
 .about-imgs .img-main { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.78) saturate(.85); }
@@ -110,14 +106,14 @@ h2.about-h2 em { display:block; font-family:'Playfair Display',serif; font-weigh
 .stat-num { font-family:'Bebas Neue',sans-serif; font-size:2.8rem; color:var(--gold); letter-spacing:.05em; line-height:1; display:block; }
 .stat-lbl { font-family:'Barlow Condensed',sans-serif; font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color:var(--g-pale); margin-top:.3rem; display:block; }
 
-/* ===== GALLERY STRIP ===== */
+
 .gstrip { display:grid; grid-template-columns:repeat(4,1fr); height:380px; }
 .gitem { position:relative; overflow:hidden; }
 .gitem img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.68) saturate(.82); transition:all .5s; }
 .gitem:hover img { filter:brightness(.88) saturate(1); transform:scale(1.07); }
 .gitem-cap { position:absolute; bottom:1.1rem; left:1.1rem; font-family:'Barlow Condensed',sans-serif; font-size:.68rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(240,234,216,.7); }
 
-/* ===== MENU ===== */
+
 .menu-sec { position:relative; padding:8rem 0; overflow:hidden; background:transparent; }
 .menu-sec-inner { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:0; max-width:1200px; margin:0 auto; padding:0 5rem; align-items:start; }
 .menu-heading-block { margin-bottom:3rem; }
@@ -136,13 +132,13 @@ details[open] > summary { color:var(--gold); }
 .mitem { display:flex; align-items:baseline; justify-content:space-between; padding:.7rem 0; border-bottom:1px solid rgba(138,171,144,.1); }
 .mitem:last-child { border-bottom:none; }
 .mname { font-family:'Playfair Display',serif; font-size:1.15rem; color:var(--cream); font-weight:400; }
+.msub { display:block; font-family:'DM Sans',sans-serif; font-size:.75rem; color:var(--g-pale); font-weight:300; margin-top:.2rem; font-style:normal; }
 .mprice { font-family:'Barlow Condensed',sans-serif; font-weight:500; font-size:.85rem; color:var(--gold); flex-shrink:0; margin-left:1.5rem; }
 .menu-right { position:sticky; top:110px; padding-left:4rem; }
 .menu-img-wrap { position:relative; width:100%; aspect-ratio:3/4; overflow:hidden; }
 .menu-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.85) saturate(.9); }
 .menu-img-label { position:absolute; bottom:1.5rem; left:1.5rem; font-family:'Barlow Condensed',sans-serif; font-size:.68rem; letter-spacing:.35em; text-transform:uppercase; color:rgba(240,234,216,.75); }
 
-/* ===== ATMOSPHERE ===== */
 .atm { padding:8rem 0; background:rgba(36,48,34,0.55); backdrop-filter:blur(4px); }
 .atm-hdr { padding:0 5rem 4rem; }
 h2.atm-h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,5vw,4.5rem); letter-spacing:.08em; color:var(--warm-white); line-height:1; margin-top:.8rem; }
@@ -153,7 +149,7 @@ h2.atm-h2 span { display:block; font-family:'Playfair Display',serif; font-weigh
 .mason-item img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.72) saturate(.85); transition:all .5s; }
 .mason-item:hover img { filter:brightness(.9) saturate(1); transform:scale(1.05); }
 
-/* ===== FIND US ===== */
+
 .findus { display:grid; grid-template-columns:1fr 1fr; min-height:58vh; }
 .findus-content { display:flex; flex-direction:column; justify-content:center; padding:6rem 5rem; background:rgba(36,48,34,0.72); backdrop-filter:blur(8px); }
 h2.findus-h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,4vw,3.8rem); letter-spacing:.08em; color:var(--warm-white); margin-bottom:2.5rem; line-height:1; }
@@ -164,7 +160,7 @@ h2.findus-h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,4vw,3
 .findus-map { overflow:hidden; min-height:380px; }
 .findus-map iframe { width:100%; height:100%; border:none; min-height:380px; filter:grayscale(.2) contrast(.9); }
 
-/* ===== CONTACT ===== */
+
 .contact { position:relative; padding:8rem 5rem; overflow:hidden; background:transparent; }
 .contact-inner { max-width:750px; margin:0 auto; text-align:center; position:relative; z-index:2; }
 h2.contact-h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,5vw,4.2rem); letter-spacing:.1em; color:var(--warm-white); margin-bottom:1.2rem; }
@@ -181,7 +177,7 @@ h2.contact-h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,5vw,4.
 .submit-btn { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:.95rem; letter-spacing:.32em; text-transform:uppercase; color:var(--g-deep); background:var(--cream); border:none; padding:1.25rem 3.5rem; cursor:pointer; align-self:flex-start; transition:background .3s,color .3s; }
 .submit-btn:hover { background:var(--gold); color:var(--g-deep); }
 
-/* ===== SOCIAL BLOCK ===== */
+
 .social-block {
   margin-top: 2.5rem;
   padding-top: 2rem;
@@ -209,7 +205,7 @@ h2.contact-h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,5vw,4.
 .ig-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,169,110,.06); }
 .ig-icon { width: 20px; height: 20px; flex-shrink: 0; }
 
-/* ===== FOOTER ===== */
+
 footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:1px solid rgba(138,171,144,.12); padding:3.2rem 5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; }
 .ft-center { font-family:'Barlow Condensed',sans-serif; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--g-pale); text-align:center; }
 .ft-center p+p { margin-top:.3rem; }
@@ -217,7 +213,7 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
 .ft-right a { font-family:'Barlow Condensed',sans-serif; font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--g-pale); text-decoration:none; transition:color .2s; }
 .ft-right a:hover { color:var(--gold); }
 
-/* ===== RESPONSIVE ===== */
+
 @media(max-width:1024px) {
   header { padding:1rem 1.5rem; }
   nav { display:none; }
@@ -283,13 +279,13 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
     </div>
   </div>
   <input type="checkbox" id="nav-chk" class="nav-toggle" aria-hidden="true">
-  <label for="nav-chk" class="nav-toggle-label" aria-label="Menüyü aç">
+  <label for="nav-chk" class="nav-toggle-label" aria-label="Menüyü aç" id="hamburger-btn">
     <span></span><span></span><span></span>
   </label>
 </header>
 
-<label for="nav-chk" class="overlay" aria-hidden="true"></label>
-<nav class="mob-menu" aria-label="Mobil navigasyon">
+<div class="overlay" id="mob-overlay" aria-hidden="true"></div>
+<nav class="mob-menu" id="mob-menu" aria-label="Mobil navigasyon">
   <a href="#hakkinda" data-tr="Hakkında" data-en="About">Hakkında</a>
   <a href="#menu" data-tr="Menü" data-en="Menu">Menü</a>
   <a href="#atmosfer" data-tr="Atmosfer" data-en="Atmosphere">Atmosfer</a>
@@ -300,7 +296,7 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
+
 <section class="hero" aria-label="Ana görsel">
   <div class="hero-left">
     <p class="hero-eyebrow" data-tr="Eskişehir · Odunpazarı" data-en="Eskişehir · Odunpazarı">Eskişehir · Odunpazarı</p>
@@ -315,8 +311,6 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
 </section>
 
 
-
-<!-- ===== ABOUT ===== -->
 <section class="about" id="hakkinda" aria-labelledby="about-h">
   <div class="about-imgs">
     <img src="görsel1.png" alt="Cold Brew" class="img-main" loading="lazy">
@@ -334,7 +328,7 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
   </div>
 </section>
 
-<!-- ===== GALLERY ===== -->
+
 <div class="gstrip" aria-label="Galeri">
   <div class="gitem"><img src="görsel11.png" alt="Ice Matcha" loading="lazy"><span class="gitem-cap" data-tr="Matcha Serisi" data-en="Matcha Series">Matcha Serisi</span></div>
   <div class="gitem"><img src="görsel6.png" alt="Filter Coffee" loading="lazy"><span class="gitem-cap" data-tr="El Yapımı Filtre" data-en="Hand-Brewed Filter">El Yapımı Filtre</span></div>
@@ -342,7 +336,7 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
   <div class="gitem"><img src="görsel2.png" alt="Palm Coffee Co." loading="lazy"><span class="gitem-cap">Palm Co.</span></div>
 </div>
 
-<!-- ===== MENU ===== -->
+
 <section class="menu-sec" id="menu" aria-labelledby="menu-h">
   <div class="menu-sec-inner">
     <div class="menu-left">
@@ -352,117 +346,277 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
       </div>
 
       <details>
-        <summary data-tr="Sıcak Kahveler" data-en="Hot Coffees">Sıcak Kahveler</summary>
+        <summary data-tr="Espresso Bar" data-en="Espresso Bar">Espresso Bar</summary>
         <div class="acc-body">
-          <div class="mitem"><span class="mname">Americano</span><span class="mprice">140 ₺</span></div>
-          <div class="mitem"><span class="mname">Latte</span><span class="mprice">160 ₺</span></div>
-          <div class="mitem"><span class="mname">Flat White</span><span class="mprice">160 ₺</span></div>
-          <div class="mitem"><span class="mname">Cortado</span><span class="mprice">160 ₺</span></div>
-          <div class="mitem"><span class="mname">Cappuccino</span><span class="mprice">140 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Filtre Kahve" data-en="Filter Coffee">Filtre Kahve</span><span class="mprice">130 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Sütlü Filtre Kahve" data-en="Milk Filter Coffee">Sütlü Filtre Kahve</span><span class="mprice">130 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Espresso (tek / çift)" data-en="Espresso (single / double)">Espresso (tek / çift)</span><span class="mprice">100–120 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Türk Kahvesi (tek / çift)" data-en="Turkish Coffee (single / double)">Türk Kahvesi (tek / çift)</span><span class="mprice">90–150 ₺</span></div>
-          <div class="mitem"><span class="mname">Espresso Macchiato</span><span class="mprice">140 ₺</span></div>
-          <div class="mitem"><span class="mname">Caramel Macchiato</span><span class="mprice">180 ₺</span></div>
-          <div class="mitem"><span class="mname">Mocha</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">White Mocha</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Caramel Latte</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Vanilla Latte</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Toffee Nut Latte</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Black Eye</span><span class="mprice">160 ₺</span></div>
-          <div class="mitem"><span class="mname">Red Eye</span><span class="mprice">150 ₺</span></div>
-          <div class="mitem"><span class="mname">Dead Eye</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Lungo Espresso</span><span class="mprice">110 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Espresso Con Panna (tek/çift)" data-en="Espresso Con Panna (single/double)">Espresso Con Panna (tek/çift)</span><span class="mprice">120–180 ₺</span></div>
+          <div class="mitem"><span class="mname">Espresso</span><span class="mprice">125 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Americano / Iced" data-en="Americano / Iced">Americano / Iced</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Cortado</span><span class="mprice">175 ₺</span></div>
+          <div class="mitem"><span class="mname">Flat White / Iced</span><span class="mprice">180 ₺</span></div>
+          <div class="mitem"><span class="mname">Cappuccino</span><span class="mprice">180 ₺</span></div>
+          <div class="mitem"><span class="mname">Cafe Miel</span><span class="mprice">180 ₺</span></div>
+          <div class="mitem"><span class="mname">Latte / Iced</span><span class="mprice">190 ₺</span></div>
+          <div class="mitem"><span class="mname">Salted Caramel Latte / Iced</span><span class="mprice">225 ₺</span></div>
+          <div class="mitem"><span class="mname">Mocha / Iced</span><span class="mprice">225 ₺</span></div>
+          <div class="mitem"><span class="mname">White Mocha / Iced</span><span class="mprice">225 ₺</span></div>
+          <div class="mitem"><span class="mname">Magnum Affogato</span><span class="mprice">225 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Türk Kahvesi / Duble" data-en="Turkish Coffee / Double">Türk Kahvesi / Duble</span><span class="mprice">140 / 160 ₺</span></div>
         </div>
       </details>
 
+  
       <details>
-        <summary data-tr="Soğuk Kahveler" data-en="Iced Coffees">Soğuk Kahveler</summary>
+        <summary data-tr="Ekstralar" data-en="Extras">Ekstralar</summary>
         <div class="acc-body">
-          <div class="mitem"><span class="mname">Ice Americano</span><span class="mprice">150 ₺</span></div>
-          <div class="mitem"><span class="mname">Ice Latte</span><span class="mprice">160 ₺</span></div>
-          <div class="mitem"><span class="mname">Ice Flat White</span><span class="mprice">160 ₺</span></div>
-          <div class="mitem"><span class="mname">Ice Cortado</span><span class="mprice">160 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Ice Filtre Kahve" data-en="Ice Filter Coffee">Ice Filtre Kahve</span><span class="mprice">130 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Ice Sütlü Filtre Kahve" data-en="Ice Milk Filter Coffee">Ice Sütlü Filtre Kahve</span><span class="mprice">140 ₺</span></div>
-          <div class="mitem"><span class="mname">Ice Mocha</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Ice White Mocha</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Ice Caramel Latte</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Ice Vanilla Latte</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Ice Toffee Nut Latte</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Ice Cold Brew Latte</span><span class="mprice">150 ₺</span></div>
-          <div class="mitem"><span class="mname">Cold Brew</span><span class="mprice">140 ₺</span></div>
+          <div class="mitem"><span class="mname">Ekstra Shot</span><span class="mprice">50 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Laktozsuz Süt" data-en="Lactose-Free Milk">Laktozsuz Süt</span><span class="mprice">10 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Yulaf Sütü" data-en="Oat Milk">Yulaf Sütü</span><span class="mprice">40 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Badem Sütü" data-en="Almond Milk">Badem Sütü</span><span class="mprice">40 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Hindistan Cevizi Sütü" data-en="Coconut Milk">Hindistan Cevizi Sütü</span><span class="mprice">40 ₺</span></div>
         </div>
       </details>
 
+    
       <details>
-        <summary data-tr="Çaylar &amp; Diğer İçecekler" data-en="Teas &amp; Other Drinks">Çaylar &amp; Diğer İçecekler</summary>
+        <summary data-tr="Demlemeler" data-en="Brews">Demlemeler</summary>
         <div class="acc-body">
-          <div class="mitem"><span class="mname" data-tr="Fincan Çay" data-en="Cup of Tea">Fincan Çay</span><span class="mprice">70 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Ada Çayı" data-en="Sage Tea">Ada Çayı</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Kış Çayı" data-en="Winter Tea">Kış Çayı</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Hibiscus Çayı" data-en="Hibiscus Tea">Hibiscus Çayı</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Papatya Çayı" data-en="Chamomile Tea">Papatya Çayı</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Yeşil Çay" data-en="Green Tea">Yeşil Çay</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Sıcak Çikolata" data-en="Hot Chocolate">Sıcak Çikolata</span><span class="mprice">130 ₺</span></div>
-          <div class="mitem"><span class="mname">Chai Tea Latte</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Sahlep</span><span class="mprice">130 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Sıcak Matcha" data-en="Hot Matcha">Sıcak Matcha</span><span class="mprice">180 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Ihlamur" data-en="Linden Tea">Ihlamur</span><span class="mprice">130 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Su" data-en="Water">Su</span><span class="mprice">35 ₺</span></div>
-          <div class="mitem"><span class="mname">Beyoğlu Gazozu</span><span class="mprice">90 ₺</span></div>
-          <div class="mitem"><span class="mname">Soda</span><span class="mprice">70 ₺</span></div>
-          <div class="mitem"><span class="mname">Churchill</span><span class="mprice">90 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Filtre Kahve" data-en="Filter Coffee">Filtre Kahve</span><span class="mprice">155 ₺</span></div>
+          <div class="mitem"><span class="mname">Chemex</span><span class="mprice">190 ₺</span></div>
+          <div class="mitem"><span class="mname">V60</span><span class="mprice">190 ₺</span></div>
+          <div class="mitem"><span class="mname">Aeropress</span><span class="mprice">190 ₺</span></div>
+          <div class="mitem"><span class="mname">Cold Brew</span><span class="mprice">200 ₺</span></div>
         </div>
       </details>
 
+  
+      <details>
+        <summary data-tr="Sıcaklar" data-en="Hot Drinks">Sıcaklar</summary>
+        <div class="acc-body">
+          <div class="mitem">
+            <span class="mname">Pink Latte<em class="msub" data-tr="Pancar kökü tozu, Bal ve Süt" data-en="Beetroot powder, Honey and Milk">Pancar kökü tozu, Bal ve Süt</em></span>
+            <span class="mprice">210 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname">Golden Latte<em class="msub" data-tr="Zencefil, Zerdeçal, Tarçın, Vanilya çubuğu, Karabiler, Bal ve Süt" data-en="Ginger, Turmeric, Cinnamon, Vanilla, Black pepper, Honey and Milk">Zencefil, Zerdeçal, Tarçın, Vanilya çubuğu, Karabiler, Bal ve Süt</em></span>
+            <span class="mprice">210 ₺</span>
+          </div>
+          <div class="mitem"><span class="mname">Chai Tea Latte / Iced</span><span class="mprice">205 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Sıcak Çikolata" data-en="Hot Chocolate">Sıcak Çikolata</span><span class="mprice">195 ₺</span></div>
+          <div class="mitem"><span class="mname">Sahlep</span><span class="mprice">195 ₺</span></div>
+        </div>
+      </details>
+
+   
+      <details>
+        <summary data-tr="Çaylar" data-en="Teas">Çaylar</summary>
+        <div class="acc-body">
+          <div class="mitem"><span class="mname" data-tr="Yeşilçay" data-en="Green Tea">Yeşilçay</span><span class="mprice">165 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Ihlamur" data-en="Linden Tea">Ihlamur</span><span class="mprice">165 ₺</span></div>
+          <div class="mitem">
+            <span class="mname">Earl Grey<em class="msub" data-tr="Bergamotlu Siyah Çay" data-en="Black Tea with Bergamot">Bergamotlu Siyah Çay</em></span>
+            <span class="mprice">120 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Kış Çayı" data-en="Winter Tea"><span data-tr="Kış Çayı" data-en="Winter Tea">Kış Çayı</span><em class="msub" data-tr="Zencefil, Nar Çiçeği, Papatya, Hatmi Çiçeği, Tarçın, Ihlamur, Kuşburnu, Zerdeçal, Hibiskus" data-en="Ginger, Pomegranate, Chamomile, Hibiscus, Cinnamon, Rosehip, Turmeric">Zencefil, Nar Çiçeği, Papatya, Hatmi Çiçeği, Tarçın, Ihlamur, Kuşburnu, Zerdeçal, Hibiskus</em></span>
+            <span class="mprice">175 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Vitamin Çayı" data-en="Vitamin Tea"><span data-tr="Vitamin Çayı" data-en="Vitamin Tea">Vitamin Çayı</span><em class="msub" data-tr="Sıkma Portakal ve limon, Kış Çayı" data-en="Squeezed Orange and lemon, Winter Tea">Sıkma Portakal ve limon, Kış Çayı</em></span>
+            <span class="mprice">195 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname">In Bloom Tea<em class="msub" data-tr="Mürver, Rooibos, Elma, Böğürtlen, Dut, Nergis, Keçiboynuzu Özü, Üzüm" data-en="Elderflower, Rooibos, Apple, Blackberry, Mulberry, Daffodil, Carob Extract, Grape">Mürver, Rooibos, Elma, Böğürtlen, Dut, Nergis, Keçiboynuzu Özü, Üzüm</em></span>
+            <span class="mprice">175 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Kavunlu Beyaz Çay" data-en="Melon White Tea">Kavunlu Beyaz Çay<em class="msub" data-tr="Beyaz Çay, Kavun Özü" data-en="White Tea, Melon Extract">Beyaz Çay, Kavun Özü</em></span>
+            <span class="mprice">175 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname">Rooibos Vanilya / Iced<em class="msub" data-tr="Rooibos, Vanilya Parçacıkları" data-en="Rooibos, Vanilla Pieces">Rooibos, Vanilya Parçacıkları</em></span>
+            <span class="mprice">175 / 185 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname">Berry Punch / Iced<em class="msub" data-tr="Çilek, Hibiskus, Portakal Kabusu, Gül Yaprakları, Böğürtlen" data-en="Strawberry, Hibiscus, Orange Peel, Rose Petals, Blackberry">Çilek, Hibiskus, Portakal Kabusu, Gül Yaprakları, Böğürtlen</em></span>
+            <span class="mprice">175 / 185 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname">Chocolate Tea<em class="msub" data-tr="Siyah çay, Kakao parçacıkları" data-en="Black tea, Cocoa pieces">Siyah çay, Kakao parçacıkları</em></span>
+            <span class="mprice">175 ₺</span>
+          </div>
+        </div>
+      </details>
+
+      
       <details>
         <summary data-tr="Soğuk İçecekler" data-en="Cold Drinks">Soğuk İçecekler</summary>
         <div class="acc-body">
-          <div class="mitem"><span class="mname" data-tr="Limonata" data-en="Lemonade">Limonata</span><span class="mprice">130 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Mango Limonata" data-en="Mango Lemonade">Mango Limonata</span><span class="mprice">150 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Strawberry Limonata" data-en="Strawberry Lemonade">Strawberry Limonata</span><span class="mprice">150 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Yeşil Elma Frozen" data-en="Green Apple Frozen">Yeşil Elma Frozen</span><span class="mprice">160 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Orman Meyveli Frozen" data-en="Forest Berry Frozen">Orman Meyveli Frozen</span><span class="mprice">160 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Karpuz Frozen" data-en="Watermelon Frozen">Karpuz Frozen</span><span class="mprice">160 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Mango Frozen" data-en="Mango Frozen">Mango Frozen</span><span class="mprice">160 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Kavun + Muz Frozen" data-en="Melon + Banana Frozen">Kavun + Muz Frozen</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Berry Hibiscus</span><span class="mprice">150 ₺</span></div>
-          <div class="mitem"><span class="mname">Cool Lime</span><span class="mprice">150 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Çilekli Milkshake" data-en="Strawberry Milkshake">Çilekli Milkshake</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Çikolatalı Milkshake" data-en="Chocolate Milkshake">Çikolatalı Milkshake</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Muzlu Milkshake" data-en="Banana Milkshake">Muzlu Milkshake</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Vanilyalı Milkshake" data-en="Vanilla Milkshake">Vanilyalı Milkshake</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Chocolate Frappe</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Vanilla Frappe</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Coconut Frappe</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Caramel Frappe</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname">Ice Matcha</span><span class="mprice">190 ₺</span></div>
-          <div class="mitem"><span class="mname">Ice Matcha Mango</span><span class="mprice">210 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Ice Matcha Karadut" data-en="Ice Matcha Mulberry">Ice Matcha Karadut</span><span class="mprice">210 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Ice Matcha Böğürtlen" data-en="Ice Matcha Blackberry">Ice Matcha Böğürtlen</span><span class="mprice">210 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Ice Matcha Çilek" data-en="Ice Matcha Strawberry">Ice Matcha Çilek</span><span class="mprice">210 ₺</span></div>
-          <div class="mitem"><span class="mname">Ice Matcha Vanilla</span><span class="mprice">210 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Frozen (Mevsim Meyveleri)" data-en="Frozen (Seasonal Fruits)">Frozen (Mevsim Meyveleri)</span><span class="mprice">250 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Şişe Meyve Suyu" data-en="Bottled Juice">Şişe Meyve Suyu</span><span class="mprice">120 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Gazoz (Sade / Zencefil)" data-en="Soda (Plain / Ginger)">Gazoz (Sade / Zencefil)</span><span class="mprice">120 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Ev Yapımı Limonata" data-en="Homemade Lemonade">Ev Yapımı Limonata</span><span class="mprice">200 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Sıkma Portakal" data-en="Freshly Squeezed Orange">Sıkma Portakal</span><span class="mprice">200 ₺</span></div>
+          <div class="mitem"><span class="mname">Pellegrino</span><span class="mprice">120 ₺</span></div>
+          <div class="mitem"><span class="mname">Churchill</span><span class="mprice">130 ₺</span></div>
+          <div class="mitem"><span class="mname">Soda</span><span class="mprice">100 ₺</span></div>
+          <div class="mitem"><span class="mname" data-tr="Su" data-en="Water">Su</span><span class="mprice">45 ₺</span></div>
         </div>
       </details>
 
       <details>
-        <summary data-tr="Tatlılar &amp; Sandviçler" data-en="Desserts &amp; Sandwiches">Tatlılar &amp; Sandviçler</summary>
+        <summary data-tr="Matcha" data-en="Matcha">Matcha</summary>
         <div class="acc-body">
-          <div class="mitem"><span class="mname">Latte Cake</span><span class="mprice">200 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Limonlu Cheesecake" data-en="Lemon Cheesecake">Limonlu Cheesecake</span><span class="mprice">210 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Frambuazlı Cheesecake" data-en="Raspberry Cheesecake">Frambuazlı Cheesecake</span><span class="mprice">210 ₺</span></div>
-          <div class="mitem"><span class="mname">San Sebastian</span><span class="mprice">220 ₺</span></div>
-          <div class="mitem"><span class="mname">Brownie</span><span class="mprice">190 ₺</span></div>
-          <div class="mitem"><span class="mname">Cookies</span><span class="mprice">150 ₺</span></div>
-          <div class="mitem"><span class="mname">Magnolia</span><span class="mprice">190 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Hindi Füme Sandviç" data-en="Smoked Turkey Sandwich">Hindi Füme Sandviç</span><span class="mprice">190 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="Karışık Soğuk Sandviç" data-en="Mixed Cold Sandwich">Karışık Soğuk Sandviç</span><span class="mprice">170 ₺</span></div>
-          <div class="mitem"><span class="mname" data-tr="3 Peynirli Soğuk Sandviç" data-en="3 Cheese Cold Sandwich">3 Peynirli Soğuk Sandviç</span><span class="mprice">170 ₺</span></div>
+          <div class="mitem"><span class="mname">Matcha / Iced</span><span class="mprice">200 ₺</span></div>
+          <div class="mitem"><span class="mname">Matcha Latte / Iced</span><span class="mprice">210 ₺</span></div>
+          <div class="mitem">
+            <span class="mname">Iced Strawberry Matcha<em class="msub" data-tr="Ev yapımı çilek sosu ve Matcha" data-en="Homemade strawberry sauce and Matcha">Ev yapımı çilek sosu ve Matcha</em></span>
+            <span class="mprice">235 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname">Iced Blueberry Matcha<em class="msub" data-tr="Ev yapımı yabansermesini sosu ve Matcha" data-en="Homemade blueberry sauce and Matcha">Ev yapımı yabansermesini sosu ve Matcha</em></span>
+            <span class="mprice">235 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname">Iced London Fog Matcha<em class="msub" data-tr="Süt ile demlemiş Earl Grey çayı ve Matcha" data-en="Earl Grey tea brewed with milk and Matcha">Süt ile demlemiş Earl Grey çayı ve Matcha</em></span>
+            <span class="mprice">235 ₺</span>
+          </div>
         </div>
       </details>
+
+    
+      <details>
+        <summary data-tr="Smoothie" data-en="Smoothie">Smoothie</summary>
+        <div class="acc-body">
+          <div class="mitem">
+            <span class="mname">Peanut<em class="msub" data-tr="Portakal, muz, yoğurt, chia, fıstık ezmesi" data-en="Orange, banana, yoghurt, chia, peanut butter">Portakal, muz, yoğurt, chia, fıstık ezmesi</em></span>
+            <span class="mprice">260 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname">Unicorn<em class="msub" data-tr="Yabanmersini, çilek, muz, chia, yoğurt" data-en="Blueberry, strawberry, banana, chia, yoghurt">Yabanmersini, çilek, muz, chia, yoğurt</em></span>
+            <span class="mprice">260 ₺</span>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary data-tr="Kahvaltı" data-en="Breakfast">Kahvaltı</summary>
+        <div class="acc-body">
+          <div class="mitem">
+            <span class="mname" data-tr="Avokado-Waffle Kahvaltı" data-en="Avocado-Waffle Breakfast">Avokado-Waffle Kahvaltı<em class="msub" data-tr="Kaşarlı tuzlu waffle hamuru, avokado dilim, labne krema, göz yumurta, yeşillik, çeri domates, vinegret" data-en="Cheddar salted waffle dough, avocado slice, labne cream, fried egg, greens, cherry tomatoes, vinaigrette">Kaşarlı tuzlu waffle hamuru, avokado dilim, labne krema, göz yumurta, yeşillik, çeri domates, vinegret</em></span>
+            <span class="mprice">370 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Ekmek Üstü Çılbır" data-en="Eggs Benedict Style">Ekmek Üstü Çılbır<em class="msub" data-tr="Ekşimaya Trabzon Ekmeği, adaçaylı yoğurt, 'poşe' yumurta, ıspanak sote, Hollandaise sos, acı yağ ve fırın baby patates ile servis edilir" data-en="Sourdough Trabzon bread, sage yoghurt, poached egg, sautéed spinach, Hollandaise sauce, chili oil, oven baby potatoes">Ekşimaya Trabzon Ekmeği, adaçaylı yoğurt, poşe yumurta, ıspanak sote, Hollandaise sos, acı yağ ve fırın baby patates</em></span>
+            <span class="mprice">340 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="İtalyan Salam-Waffle Kahvaltı" data-en="Italian Salami-Waffle Breakfast">İtalyan Salam-Waffle Kahvaltı<em class="msub" data-tr="Kaşarlı tuzlu waffle hamuru, göz yumurta, karabiberli İtalyan salamı, dilim cheddar, dilim domates, yeşillik, patates" data-en="Cheddar waffle, fried egg, peppered Italian salami, cheddar, tomato, greens, potatoes">Kaşarlı tuzlu waffle hamuru, göz yumurta, karabiberli İtalyan salamı, dilim cheddar, dilim domates, yeşillik, patates</em></span>
+            <span class="mprice">370 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Badem-Çikolata Porridge" data-en="Almond-Chocolate Porridge">Badem-Çikolata Porridge<em class="msub" data-tr="Seçeceğiniz sütte pişmiş yulaf ezmesi, üzeri vişne compote, şekersiz bitter çikolata, ballı badem krokan, limon zest" data-en="Oats cooked in your choice of milk, cherry compote, sugarless dark chocolate, honey almond crunch, lemon zest">Seçeceğiniz sütte pişmiş yulaf ezmesi, üzeri vişne compote, şekersiz bitter çikolata, ballı badem krokan, limon zest</em></span>
+            <span class="mprice">275 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Kakule-Fıstık Granola" data-en="Cardamom-Pistachio Granola">Kakule-Fıstık Granola<em class="msub" data-tr="Taze peynirli çırpılmış yoğurt, kuru üzümlü fıstıklı granola, nar, bal, taze kekik, portakal segman" data-en="Whipped fresh cheese yoghurt, raisin-pistachio granola, pomegranate, honey, fresh thyme, orange segment">Taze peynirli çırpılmış yoğurt, kuru üzümlü fıstıklı granola, nar, bal, taze kekik, portakal segman</em></span>
+            <span class="mprice">275 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Glutensiz Kahvaltı Sandviç" data-en="Gluten-Free Breakfast Sandwich">Glutensiz Kahvaltı Sandviç<em class="msub" data-tr="Glutensiz sandviç ekmeği arasına; glutensiz pesto sos, İtalyan salamı, dilim cheddar, dilim domates, yeşillik, patates" data-en="Gluten-free bread with pesto sauce, Italian salami, cheddar, tomato, greens, potatoes">Glutensiz sandviç ekmeği arasına; glutensiz pesto sos, İtalyan salamı, dilim cheddar, dilim domates, yeşillik, patates</em></span>
+            <span class="mprice">360 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Sosis Kahvaltı Kase" data-en="Sausage Breakfast Bowl">Sosis Kahvaltı Kase<em class="msub" data-tr="Dana Frankfurter Sosis kızartma, patatesli anne yumurtası, avokado krema, roka, Kars Gravyeri, hardal" data-en="Fried Frankfurt sausage, homestyle eggs, avocado cream, arugula, Kars Gruyere, mustard">Dana Frankfurter Sosis kızartma, patatesli anne yumurtası, avokado krema, roka, Kars Gravyeri, hardal</em></span>
+            <span class="mprice">375 ₺</span>
+          </div>
+        </div>
+      </details>
+
+   
+      <details>
+        <summary data-tr="Ana Yemek" data-en="Main Course">Ana Yemek</summary>
+        <div class="acc-body">
+          <div class="mitem">
+            <span class="mname">Dana Sosis Sub<em class="msub" data-tr="Özel ekşi maya ekmek, %100 Dana Frankfurter Sosis, Gewürzgurken turşu, hardal, iceberg, dilim cheddar, fırın baby patates" data-en="Sourdough bun, 100% beef frankfurter, pickles, mustard, iceberg, cheddar, oven baby potatoes">Özel ekşi maya ekmek, %100 Dana Frankfurter Sosis, Gewürzgurken turşu, hardal, iceberg, dilim cheddar, fırın baby patates</em></span>
+            <span class="mprice">390 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Basmati Tavuk Kase" data-en="Basmati Chicken Bowl">Basmati Tavuk Kase<em class="msub" data-tr="Basmati pirinç, tavuk pirzola, coleslaw, Gewürzgurken turşu, mevsim yeşilliği, çeri domates" data-en="Basmati rice, chicken chop, coleslaw, pickles, seasonal greens, cherry tomatoes">Basmati pirinç, tavuk pirzola, coleslaw, Gewürzgurken turşu, mevsim yeşilliği, çeri domates</em></span>
+            <span class="mprice">375 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Pirzola Tavuk Kase" data-en="Chicken Chop Bowl">Pirzola Tavuk Kase<em class="msub" data-tr="Kars gravyerli köz patlıcan, tavuk pirzola, kızarmış peynir, yabani pirinç, köz kapya mevsim yeşilliği" data-en="Roasted eggplant with Kars Gruyere, chicken chop, fried cheese, wild rice, roasted pepper, seasonal greens">Kars gravyerli köz patlıcan, tavuk pirzola, kızarmış peynir, yabani pirinç, köz kapya mevsim yeşilliği</em></span>
+            <span class="mprice">390 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Karabuğday Kase" data-en="Buckwheat Bowl">Karabuğday Kase<em class="msub" data-tr="Haşlanmış karabuğday, susamlı salatalık, paprika nohut, fırın sebze, mevsim yeşilliği, tahin yoğurt sos" data-en="Boiled buckwheat, sesame cucumber, paprika chickpeas, roasted vegetables, seasonal greens, tahini yogurt sauce">Haşlanmış karabuğday, susamlı salatalık, paprika nohut, fırın sebze, mevsim yeşilliği, tahin yoğurt sos</em></span>
+            <span class="mprice">315 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname">Thai Salata<em class="msub" data-tr="Özel sos, çeri domates, kızarmış paprika nohut, soya filizi, yabani pirinç, kavırılmış yer fıstığı, mevsim yeşilliği, vinegret" data-en="Special dressing, cherry tomatoes, roasted paprika chickpeas, bean sprouts, wild rice, roasted peanuts, seasonal greens, vinaigrette">Özel sos, çeri domates, kızarmış paprika nohut, soya filizi, yabani pirinç, kavırılmış yer fıstığı, mevsim yeşilliği, vinegret</em></span>
+            <span class="mprice">315 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Kızarmış Protein Wrap" data-en="Crispy Protein Wrap">Kızarmış Protein Wrap<em class="msub" data-tr="Tavuk pirzola, kızarmış paprika, nohut, köz patlıcan, baby ıspanak, adaçaylı yoğurt sos ve fırın baby patates" data-en="Chicken chop, roasted paprika, chickpeas, roasted eggplant, baby spinach, sage yogurt sauce and oven baby potatoes">Tavuk pirzola, kızarmış paprika, nohut, köz patlıcan, baby ıspanak, adaçaylı yoğurt sos ve fırın baby patates</em></span>
+            <span class="mprice">390 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Kızarmış Sebze Wrap" data-en="Roasted Vegetable Wrap">Kızarmış Sebze Wrap<em class="msub" data-tr="Soya kıyması sote, paprika nohut, mevsim yeşilliği, salatalık, fırın baby patates ile servis edilir" data-en="Sautéed soy mince, paprika chickpeas, seasonal greens, cucumber, oven baby potatoes">Soya kıyması sote, paprika nohut, mevsim yeşilliği, salatalık, fırın baby patates ile servis edilir</em></span>
+            <span class="mprice">330 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname">Bacon Tost<em class="msub" data-tr="Ekşi Mayalı Ekmek, Mantar sos, Bacon, Roka, Kaşar peyniri" data-en="Sourdough bread, mushroom sauce, Bacon, Arugula, Kashkaval cheese">Ekşi Mayalı Ekmek, Mantar sos, Bacon, Roka, Kaşar peyniri</em></span>
+            <span class="mprice">310 ₺</span>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary data-tr="Gün Boyu Tuzlu" data-en="All Day Savoury">Gün Boyu Tuzlu</summary>
+        <div class="acc-body">
+          <div class="mitem">
+            <span class="mname" data-tr="Gravyer-Cheddar Scone" data-en="Gruyere-Cheddar Scone">Gravyer-Cheddar Scone<em class="msub" data-tr="Gravyer ve Cheddar peynirli, Tereyağlı İngiliz Çöreği. Adaçaylı yoğurt ile servis edilir" data-en="Gruyere and Cheddar cheese, Buttery English muffin. Served with sage yoghurt">Gravyer ve Cheddar peynirli, Tereyağlı İngiliz Çöreği. Adaçaylı yoğurt ile servis edilir</em></span>
+            <span class="mprice">150 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Pesto-Ceviz Poğaça" data-en="Pesto-Walnut Pastry">Pesto-Ceviz Poğaça<em class="msub" data-tr="Kuru domates dilimleri, pesto, kavrulmuş ceviz, rendekaşar, ay çekirdeği" data-en="Sun-dried tomato slices, pesto, roasted walnut, grated kashkaval, sunflower seeds">Kuru domates dilimleri, pesto, kavrulmuş ceviz, rendekaşar, ay çekirdeği</em></span>
+            <span class="mprice">145 ₺</span>
+          </div>
+        </div>
+      </details>
+
+   
+      <details>
+        <summary data-tr="Tatlı &amp; Kurabiye" data-en="Desserts &amp; Cookies">Tatlı &amp; Kurabiye</summary>
+        <div class="acc-body">
+          <div class="mitem">
+            <span class="mname">Mocha Cheesecake<em class="msub" data-tr="New York cheesecake üzeri espresso, pastacı kreması, callebaut bitter, kakao" data-en="New York cheesecake topped with espresso, pastry cream, callebaut bitter, cocoa">New York cheesecake üzeri espresso, pastacı kreması, callebaut bitter, kakao</em></span>
+            <span class="mprice">220 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Şekersiz Çikolatalı Muffin" data-en="Sugar-Free Chocolate Muffin">Şekersiz Çikolatalı Muffin<em class="msub" data-tr="Badem unu, pekmez, şekersiz bitter çikolata" data-en="Almond flour, molasses, sugar-free dark chocolate">Badem unu, pekmez, şekersiz bitter çikolata</em></span>
+            <span class="mprice">170 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname">Biscoff Brownie<em class="msub" data-tr="Üzerinde fıstıklı Lotus kreması" data-en="Topped with pistachio Lotus cream">Üzerinde fıstıklı Lotus kreması</em></span>
+            <span class="mprice">220 ₺</span>
+          </div>
+          <div class="mitem"><span class="mname" data-tr="Limon Haşhaş Kurabiye" data-en="Lemon Poppy Seed Cookie">Limon Haşhaş Kurabiye</span><span class="mprice">130 ₺</span></div>
+          <div class="mitem"><span class="mname">Nutella Cookie</span><span class="mprice">165 ₺</span></div>
+          <div class="mitem">
+            <span class="mname">Bitter Sweet Cherry Pie<em class="msub" data-tr="Bitter tart hamuru, vişne compote, callebaut çikolata katman" data-en="Bitter tart dough, cherry compote, callebaut chocolate layer">Bitter tart hamuru, vişne compote, callebaut çikolata katman</em></span>
+            <span class="mprice">220 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname" data-tr="Çilek-Matcha Rulo" data-en="Strawberry-Matcha Roll">Çilek-Matcha Rulo<em class="msub" data-tr="Ev yapımı taze çilek reçeli, matcha kreması, sponge kek" data-en="Homemade fresh strawberry jam, matcha cream, sponge cake">Ev yapımı taze çilek reçeli, matcha kreması, sponge kek</em></span>
+            <span class="mprice">200 ₺</span>
+          </div>
+          <div class="mitem">
+            <span class="mname">Berry Puff<em class="msub" data-tr="Pate a choux hamuru, limonlu pastacı kreması, berry sos" data-en="Choux pastry, lemon pastry cream, berry sauce">Pate a choux hamuru, limonlu pastacı kreması, berry sos</em></span>
+            <span class="mprice">210 ₺</span>
+          </div>
+        </div>
+      </details>
+
     </div>
     <div class="menu-right">
       <div class="menu-img-wrap">
@@ -473,7 +627,7 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
   </div>
 </section>
 
-<!-- ===== ATMOSPHERE ===== -->
+
 <section class="atm" id="atmosfer" aria-labelledby="atm-h">
   <div class="atm-hdr">
     <span class="sec-label" data-tr="Mekanımız" data-en="Our Space">Mekanımız</span>
@@ -490,7 +644,7 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
   </div>
 </section>
 
-<!-- ===== FIND US ===== -->
+
 <section class="findus" aria-labelledby="findus-h">
   <div class="findus-content">
     <span class="sec-label" data-tr="Bizi Bulun" data-en="Find Us">Bizi Bulun</span>
@@ -511,14 +665,12 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
   </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
 <section class="contact" id="iletisim" aria-labelledby="contact-h">
   <div class="contact-inner">
     <span class="sec-label" data-tr="İletişim" data-en="Contact">İletişim</span>
     <h2 class="contact-h2" id="contact-h" data-tr="BİZE ULAŞIN" data-en="GET IN TOUCH">BİZE ULAŞIN</h2>
     <p data-tr="Rezervasyon, organizasyon teklifi veya herhangi bir sorunuz için aşağıdan mesaj bırakın." data-en="For reservations, event inquiries or any questions, leave us a message below.">Rezervasyon, organizasyon teklifi veya herhangi bir sorunuz için aşağıdan mesaj bırakın.</p>
-    <form class="cform" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="BURAYA_WEB3FORMS_ANAHTARINI_YAZ">
+    <form class="cform" action="https://formspree.io/f/xaqkkgvj" method="POST">
       <div class="frow">
         <div class="fg">
           <label for="name" data-tr="Adınız" data-en="Your Name">Adınız</label>
@@ -545,7 +697,6 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
       </div>
       <button type="submit" class="submit-btn" data-tr="Mesaj Gönder" data-en="Send Message">Mesaj Gönder</button>
     </form>
-    
 
     <div class="social-block">
       <span class="social-label" data-tr="Hesaplarımız" data-en="Our Accounts">Hesaplarımız</span>
@@ -565,7 +716,7 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+
 <footer>
   <a href="#" class="logo" aria-label="Sayfanın başına dön">
     <img src="logo2.png" alt="Palm Coffee Co. Logo" class="nav-round-logo">
@@ -583,47 +734,60 @@ footer { background:rgba(36,48,34,0.85); backdrop-filter:blur(10px); border-top:
 </div>
 
 <script>
-/* =========================================
-   DİL SİSTEMİ
-   ========================================= */
+
 let currentLang = 'tr';
 
 function setLang(lang) {
   currentLang = lang;
 
-  // data-tr / data-en olan tüm elementlerin textContent'ini güncelle
   document.querySelectorAll('[data-tr][data-en]').forEach(el => {
     const val = el.getAttribute('data-' + lang);
     if (val !== null) el.textContent = val;
   });
 
-  // Placeholder'lar (input / textarea)
   document.querySelectorAll('[data-tr-placeholder][data-en-placeholder]').forEach(el => {
     el.placeholder = el.getAttribute('data-' + lang + '-placeholder');
   });
 
-  // Select option'ları
   document.querySelectorAll('select option[data-tr][data-en]').forEach(opt => {
     opt.textContent = opt.getAttribute('data-' + lang);
   });
 
-  // html lang attribute
   document.documentElement.lang = lang;
 
-  // Buton aktif durumu — tüm lang butonlarını güncelle
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
 }
 
-// Tüm lang butonlarına listener ekle (header + mobil menü)
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => setLang(btn.dataset.lang));
 });
 
-/* =========================================
-   SCROLL — header küçülür + aktif nav linki
-   ========================================= */
+
+const mobMenu = document.getElementById('mob-menu');
+const mobOverlay = document.getElementById('mob-overlay');
+const hamburger = document.getElementById('hamburger-btn');
+
+function openMobMenu() {
+  mobMenu.classList.add('open');
+  mobOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobMenu() {
+  mobMenu.classList.remove('open');
+  mobOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', (e) => {
+  e.preventDefault();
+  mobMenu.classList.contains('open') ? closeMobMenu() : openMobMenu();
+});
+mobOverlay.addEventListener('click', closeMobMenu);
+mobMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobMenu));
+
+
 const header = document.querySelector('header');
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 60);
@@ -637,9 +801,7 @@ window.addEventListener('scroll', () => {
   });
 }, { passive: true });
 
-/* =========================================
-   SCROLL REVEAL
-   ========================================= */
+
 const revealEls = document.querySelectorAll('.about-content,.about-imgs,.irow,.mason-item,.gitem,.stat-num,.menu-heading-block,details');
 revealEls.forEach((el, i) => {
   el.style.opacity = '0';
@@ -656,9 +818,6 @@ new IntersectionObserver((entries) => {
   revealEls.forEach(el => obs.observe(el));
 })() : null;
 
-/* =========================================
-   LİGHTBOX
-   ========================================= */
 const modal = document.createElement('div');
 modal.id = 'lightbox';
 modal.setAttribute('role','dialog'); modal.setAttribute('aria-modal','true');
@@ -713,9 +872,6 @@ document.addEventListener('keydown', e => {
   if (e.key==='ArrowRight') document.getElementById('lb-next').click();
 });
 
-/* =========================================
-   BACK TO TOP
-   ========================================= */
 const btt = document.createElement('button');
 btt.id='back-to-top'; btt.setAttribute('aria-label','Sayfanın başına dön'); btt.innerHTML='↑';
 document.body.appendChild(btt);
